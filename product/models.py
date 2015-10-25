@@ -13,7 +13,7 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    sku = models.CharField(max_length=100)
+    sku = models.CharField(max_length=100, unique=True)
     model = models.CharField(max_length=100)
     name = models.CharField(max_length=200)
     category = models.ForeignKey(Category)

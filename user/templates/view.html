@@ -15,17 +15,6 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">{{ product.name }}</h1>
-                        {% if created == 'True' %}
-                            <div class="alert alert-success alert-dismissable">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                Congratulations! You have successfully created a product.
-                            </div>
-                        {% elif created == 'False' %}
-                            <div class="alert alert-danger alert-dismissable">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                There was an error creating the product. Please try again.
-                            </div>
-                        {% endif %}
                         {% if updated == 'True' %}
                             <div class="alert alert-success alert-dismissable">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
