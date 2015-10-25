@@ -3,16 +3,26 @@ from django.utils import timezone
 
 # Create your models here.
 
+class Category(models.Model):
+    name = models.CharField(max_length=50, default='Default')
+    number_of_items = models.IntegerField(default=0)
+    created_date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.name
+
+
 class Product(models.Model):
     sku = models.CharField(max_length=100)
-    name = models.CharField(max_length=200)
     model = models.CharField(max_length=100)
+    name = models.CharField(max_length=200)
+    category = models.ForeignKey(Category)
     length = models.FloatField(null=True, blank=True)
     breadth = models.FloatField(null=True, blank=True)
     height = models.FloatField(null=True, blank=True)
+    price = models.DecimalField(default=0, max_digits=8, decimal_places=2)
     image = models.ImageField(upload_to='images')
     thumbnail = models.ImageField(upload_to='images', blank=True, null=True)
-    price = models.DecimalField(default=0, max_digits=8, decimal_places=2)
     created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
@@ -27,7 +37,7 @@ class Product(models.Model):
         from django.core.files.uploadhandler import BytesIO
         from django.core.files.uploadedfile import SimpleUploadedFile
 
-        THUMBNAIL_SIZE = (150, 195)
+        THUMBNAIL_SIZE = (80, 80)
         FULL_SIZE = (760, 950)
 
         DJANGO_TYPE = self.image.file.content_type
