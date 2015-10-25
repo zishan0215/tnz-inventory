@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            {% include 'navbartop.html' %}
+            {% include 'navbarside.html' %}
+        </nav>
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Edit item</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <form role="form" action="{% url 'user:edit' product.id %}" method="post">
+                                        <div class="col-lg-6">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                                <label>SKU Code</label>
+                                                <input class="form-control" name="sku" id="id_sku" type="text" value="{{ product.sku }}" disabled>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Model No.</label>
+                                                <input class="form-control" name="model" id="id_model" type="text" value="{{ product.model }}">
+                                                <p class="help-block">Example: MH-001red</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Product Name</label>
+                                                <input class="form-control" name="name" id="id_name" type="text" value="{{ product.name }}">
+                                                <p class="help-block">Example: Bird House</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Category</label>
+                                                <select class="form-control" id="id_category" name="category">
+                                                    {% for cat in category %}
+                                                        <option value="{{ cat.id }}">{{ cat.name }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Price</label>
+                                                <input class="form-control" name="price" id="id_price" type="text" value="{{ product.price }}">
+                                                <p class="help-block">Example: 500</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label>Length (in cm)</label>
+                                                <input class="form-control" name="length" id="id_length" type="text" value="{{ product.length }}">
+                                                <p class="help-block">Example: 24.0</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Breadth (in cm)</label>
+                                                <input class="form-control" name="breadth" id="id_breadth" type="text" value="{{ product.breadth }}">
+                                                <p class="help-block">Example: 24.0</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Height (in cm)</label>
+                                                <input class="form-control" name="height" id="id_height" type="text" value="{{ product.height }}">
+                                                <p class="help-block">Example: 24.0</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-success item_submit_btn">Update</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+{% endblock %}

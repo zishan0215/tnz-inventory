@@ -42,13 +42,13 @@
                                         <tbody>
                                         {% for product in products %}
                                             <tr>
-                                                <td><img src="/media/{{ product.thumbnail }}" alt="{{ product.name }}"/></td>
+                                                <td><img src="/media/{{ product.thumbnail }}" alt="{{ product.name }}" class="img img-thumbnail"/></td>
                                                 <td>{{ product.sku }}</td>
                                                 <td>{{ product.name }}</td>
                                                 <td>
-                                                    <a href="#"><button class="btn btn-warning"><i class="fa fa-edit"></i></button></a>
-                                                    <a href="#"><button class="btn btn-primary"><i class="fa fa-info"></i></button></a>
-                                                    <a href="#"><button class="btn btn-danger"><i class="fa fa-trash"></i></button></a>
+                                                    <a href="{% url 'user:edit' product.id %}"><button class="btn btn-warning"><i class="fa fa-edit"></i></button></a>
+                                                    <a href="{% url 'user:view' product.id %}"><button class="btn btn-primary"><i class="fa fa-info"></i></button></a>
+{#                                                    <a href="#"><button class="btn btn-danger"><i class="fa fa-trash"></i></button></a>#}
 {#                                                    <form action="#">{% csrf_token %}#}
 {#                                                        <input type="hidden" name="id" value="{{ product.id }}"/>#}
 {#                                                        <button type="submit" class="btn btn-warning">EDIT</button>#}

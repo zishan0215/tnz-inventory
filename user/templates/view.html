@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            {% include 'navbartop.html' %}
+            {% include 'navbarside.html' %}
+        </nav>
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">{{ product.name }}</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img src="/media/{{ product.image }}" alt="{{ product.name }}" class="img img-responsive"/>
+                    </div>
+                    <div class="col-lg-6">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>SKU</td>
+                                <td>{{ product.sku }}</td>
+                            </tr>
+                            <tr>
+                                <td>Model No.</td>
+                                <td>{{ product.model }}</td>
+                            </tr>
+                            <tr>
+                                <td>Product Name</td>
+                                <td>{{ product.name }}</td>
+                            </tr>
+                            <tr>
+                                <td>Category</td>
+                                <td>{{ product.category }}</td>
+                            </tr>
+                            <tr>
+                                <td>Dimensions (cm)</td>
+                                <td>{{ product.length }} x {{ product.breadth }} x {{ product.height }}</td>
+                            </tr>
+                            <tr>
+                                <td>Price</td>
+                                <td>{{ product.price }}</td>
+                            </tr>
+                        </table>
+                        <a href="{% url 'user:edit' product.id %}" class="btn btn-warning"><i class="fa fa-edit"> Edit</i></a>
+                        <a href="{% url 'user:edit' product.id %}" class="btn btn-danger"><i class="fa fa-trash"> Delete</i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+{% endblock %}
